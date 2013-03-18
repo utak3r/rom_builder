@@ -1,0 +1,15 @@
+#!/bin/bash
+
+rm -rf ./system
+cp -r ~/android-aokp/out/target/product/cooper/system .
+cp ~/android-aokp/out/target/product/cooper/boot.img .
+
+find ./system/bin -maxdepth 1 -type l -exec ls -lh {} \; > symlinks.txt
+find ./system/bin -maxdepth 1 -type l -exec rm -f {} \;
+find ./system/xbin -maxdepth 1 -type l -exec ls -lh {} \; >> symlinks.txt
+find ./system/xbin -maxdepth 1 -type l -exec rm -f {} \;
+
+cp aokp-DarkVision.template.zip aokp-DarkVision-NEWBUILD.zip
+zip -r aokp-DarkVision-NEWBUILD.zip ./system
+zip aokp-DarkVision-NEWBUILD.zip boot.img
+
