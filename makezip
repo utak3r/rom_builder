@@ -1,9 +1,18 @@
 #!/bin/bash
 
-rm -rf ./system
-cp -r ~/android-aokp/out/target/product/cooper/system .
-cp ~/android-aokp/out/target/product/cooper/boot.img .
+# a little setup
+BUILD_OUTPUT=~/android-aokp/out/target/product/cooper
+ADDONS_DIR=./DV.addons
+TIMESTAMP=`date +"%Y%m%d-%H%M"`
+ZIPFILENAME=aokp-DarkVision-$TIMESTAMP-DEV.zip
 
+# clean previous builds
+rm -rf ./system
+rm -f ./boot.img
+cp -r $BUILD_OUTPUT/system .
+cp $BUILD_OUTPUT/boot.img .
+
+# get rid of symlinks, but save them to a text file
 find ./system/bin -maxdepth 1 -type l -exec ls -lh {} \; > symlinks.txt
 find ./system/bin -maxdepth 1 -type l -exec rm -f {} \;
 find ./system/xbin -maxdepth 1 -type l -exec ls -lh {} \; >> symlinks.txt
@@ -11,7 +20,11 @@ find ./system/xbin -maxdepth 1 -type l -exec rm -f {} \;
 find ./system/fonts -maxdepth 1 -type l -exec ls -lh {} \; >> symlinks.txt
 find ./system/fonts -maxdepth 1 -type l -exec rm -f {} \;
 
-cp aokp-DarkVision.template.zip aokp-DarkVision-NEWBUILD.zip
-zip -r aokp-DarkVision-NEWBUILD.zip ./system
-zip aokp-DarkVision-NEWBUILD.zip boot.img
+# put some nice add-ons
+cp -r $ADDONS_DIR/* ./system
+
+# ok, make a package
+cp aokp-DarkVision.template.zip $ZIPFILENAME
+zip -r $ZIPFILENAME ./system
+zip $ZIPFILENAME boot.img
 
