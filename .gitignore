@@ -2,3 +2,6 @@ DV.addons/
 DV.builds/
 symlinks.txt
 META-INF/com/google/android/updater-script
+boot.img
+removed/
+system/
