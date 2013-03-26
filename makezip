@@ -4,7 +4,7 @@
 BUILD_OUTPUT=~/android-aokp/out/target/product/cooper
 ADDONS_DIR=./DV.addons
 TIMESTAMP=`date +"%Y%m%d-%H%M"`
-ZIPFILENAME=aokp-DarkVision-$TIMESTAMP-DEV.zip
+ZIPFILENAME=DarkVisions-7.0-$TIMESTAMP-DEV.zip
 
 # clean previous builds
 rm -rf ./system
@@ -20,11 +20,18 @@ find ./system/xbin -maxdepth 1 -type l -exec rm -f {} \;
 find ./system/fonts -maxdepth 1 -type l -exec ls -lh {} \; >> symlinks.txt
 find ./system/fonts -maxdepth 1 -type l -exec rm -f {} \;
 
+# remove some unneeded things
+rm -rf ./removed
+mkdir -p ./removed/system/app
+mv ./system/app/FmRadioReceiver.apk ./removed/system/app
+mv ./system/app/Exchange2.apk ./removed/system/app
+mv ./system/app/Email.apk ./removed/system/app
+
 # put some nice add-ons
 cp -r $ADDONS_DIR/* ./system
 
 # ok, make a package
-cp aokp-DarkVision.template.zip $ZIPFILENAME
+cp DarkVisions.template.zip $ZIPFILENAME
 zip -r $ZIPFILENAME ./system
 zip $ZIPFILENAME boot.img
 
