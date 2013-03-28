@@ -14,11 +14,20 @@ cat << EOF > updater-script
 assert(getprop("ro.product.device") == "cooper" || getprop("ro.build.product") == "cooper" ||
        getprop("ro.product.device") == "GT-S5830" || getprop("ro.build.product") == "GT-S5830");
 show_progress(0.500000, 0);
-ui_print("'DarkVisions' 7.0 for Samsung Ace");
-ui_print("created by utak3r");
-ui_print("Released: $TIMESTAMP_INFO");
-ui_print("Other used sources: AOKP Team, CyanogenMod Team,");
-ui_print("AndroidARMv6 Team, ErikCas and many others");
+
+ui_print("================================");
+ui_print("      'DarkVisions' 7.0         ");
+ui_print("       for Samsung Ace          ");
+ui_print("");
+ui_print("      created by utak3r         ");
+ui_print("    Released: $TIMESTAMP_INFO   ");
+ui_print("");
+ui_print("     Other used sources:        ");
+ui_print("  AOKP Team, CyanogenMod Team,  ");
+ui_print("   AndroidARMv6 Team, ErikCas   ");
+ui_print("       and many others          ");
+ui_print("================================");
+ui_print("");
 ui_print("");
 ui_print("INSTALLING...");
 ui_print("");
