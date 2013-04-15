@@ -17,6 +17,7 @@ show_progress(0.500000, 0);
 
 ui_print("================================");
 ui_print("      'DarkVisions' 7.0         ");
+ui_print("     Android AOKP JB-MR1        ");
 ui_print("       for Samsung Ace          ");
 ui_print("");
 ui_print("      created by utak3r         ");
@@ -24,7 +25,8 @@ ui_print("    Released: $TIMESTAMP_INFO   ");
 ui_print("");
 ui_print("     Other used sources:        ");
 ui_print("  AOKP Team, CyanogenMod Team,  ");
-ui_print("   AndroidARMv6 Team, ErikCas   ");
+ui_print("      AndroidARMv6 Team,        ");
+ui_print("        Erik Castricum          ");
 ui_print("       and many others          ");
 ui_print("================================");
 ui_print("");
